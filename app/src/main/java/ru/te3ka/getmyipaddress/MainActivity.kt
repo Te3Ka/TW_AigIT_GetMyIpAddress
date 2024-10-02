@@ -4,7 +4,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import ru.te3ka.getmyipaddress.databinding.ActivityMainBinding
+import ru.te3ka.getmyipaddress.service.RetrofitInstance
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,12 +22,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        myIpViewModel.lastIp.observe(this, Observer { ipAddress ->
-            binding.textViewMyIpAddress.text = ipAddress?.myIp ?: "No IP Address"
-        })
+        lifecycleScope.launch {
+            myIpViewModel.lastIp.collectLatest { ip ->
+                binding.textViewMyIpAddress.text = ip?.myIp ?: "No IP Address"
+            }
+        }
 
         binding.buttonRefresh.setOnClickListener {
-            myIpViewModel.fetchIpAddress()
+            binding.textViewMyIpAddress.text = "Refreshing"
+            myIpViewModel.fetchAndSaveIp(RetrofitInstance.api)
         }
     }
 }
