@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GetMyIpAddress</string>
+    <string name="my_ip_address">My Ip Address</string>
+    <string name="refresh">Refresh</string>
 </resources>
