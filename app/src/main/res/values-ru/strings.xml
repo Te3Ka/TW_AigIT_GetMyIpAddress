@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GetMyIpAddress</string>
+    <string name="my_ip_address">Мой IP-адрес</string>
+    <string name="refresh">Обновить</string>
+    <string name="refreshing">Обновление…</string>
+    <string name="no_ip_address">Нет IP-адреса</string>
+</resources>

@@ -2,4 +2,6 @@
     <string name="app_name">GetMyIpAddress</string>
     <string name="my_ip_address">My Ip Address</string>
     <string name="refresh">Refresh</string>
+    <string name="refreshing">Refreshing…</string>
+    <string name="no_ip_address">No IP Address</string>
 </resources>
